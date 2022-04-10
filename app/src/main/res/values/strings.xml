@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyStoryApp</string>
+    <string name="login">Login</string>
+    <string name="or">Or</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_email">Email</string>
+    <string name="error_pass">At least, password should be 6 characters!</string>
+    <string name="error_email">Invalid email address!</string>
+    <string name="app">App</string>
+    <string name="story">Story</string>
+    <string name="register">Register</string>
+    <string name="hint_register">Don\'t have an account yet? Register now!</string>
+    <string name="app_icon">app icon</string>
+    <string name="desc_ic_email">email icon section</string>
+    <string name="desc_ic_pass">password icon section</string>
+    <string name="background_login_bottom">background login bottom</string>
+</resources>
