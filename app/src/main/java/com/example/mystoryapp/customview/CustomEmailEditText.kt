@@ -1,18 +1,17 @@
-package com.example.mystoryapp.cv
+package com.example.mystoryapp.customview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Patterns
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.content.ContextCompat
 import com.example.mystoryapp.R
 
-class CustomPassEditText: AppCompatEditText, View.OnTouchListener{
+class CustomEmailEditText : AppCompatEditText, View.OnTouchListener{
 
     constructor(context: Context) : super(context) {
         init()
@@ -30,7 +29,7 @@ class CustomPassEditText: AppCompatEditText, View.OnTouchListener{
                 // Do nothing.
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.length<6) error = resources.getString(R.string.error_pass)
+                if(!Patterns.EMAIL_ADDRESS.matcher(s).matches()) error = resources.getString(R.string.error_email)
             }
             override fun afterTextChanged(s: Editable) {
                 // Do nothing.
@@ -44,7 +43,7 @@ class CustomPassEditText: AppCompatEditText, View.OnTouchListener{
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = resources.getString(R.string.hint_password)
+        hint = resources.getString(R.string.hint_email)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 }

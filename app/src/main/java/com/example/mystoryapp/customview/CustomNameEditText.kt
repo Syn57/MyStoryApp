@@ -1,4 +1,4 @@
-package com.example.mystoryapp.cv
+package com.example.mystoryapp.customview
 
 import android.content.Context
 import android.graphics.Canvas
