@@ -102,7 +102,7 @@ class CustomNameEditText: AppCompatEditText, View.OnTouchListener {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = resources.getString(R.string.hint_username)
+        hint = resources.getString(R.string.name)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 }

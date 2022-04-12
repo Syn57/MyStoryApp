@@ -15,4 +15,7 @@
     <string name="desc_ic_email">email icon section</string>
     <string name="desc_ic_pass">password icon section</string>
     <string name="background_login_bottom">background login bottom</string>
+    <string name="name">Name</string>
+    <string name="desc_name_ic">icon name input section</string>
+    <string name="logout">Logout</string>
 </resources>

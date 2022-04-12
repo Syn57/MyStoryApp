@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mystoryapp" >
-
+    package="com.example.mystoryapp">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App.Starting" >
+        android:theme="@style/Theme.MyStoryApp">
         <activity
-            android:name=".view.login.LoginActivity"
+            android:name=".view.regist.RegistActivity"
             android:theme="@style/Theme.MyStoryApp"
             android:exported="false" />
         <activity
+            android:name=".view.login.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyStoryApp" />
+        <activity
             android:name=".view.main.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.App.Starting" >
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
