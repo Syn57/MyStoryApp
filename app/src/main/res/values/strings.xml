@@ -20,4 +20,6 @@
     <string name="logout">Logout</string>
     <string name="error_regist">Ups, please check your data again!</string>
     <string name="succes_regist">User created, please login!</string>
+    <string name="error_400">Email or password is invalid</string>
+    <string name="error_401">Account not found</string>
 </resources>

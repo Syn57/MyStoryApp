@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    tools:context=".view.regist.RegistActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:visibility="gone"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_icon_email"
+        app:layout_constraintStart_toEndOf="@+id/iv_icon_email"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon_email"
+        app:layout_constraintVertical_bias="0.458" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/app_icon"
+        android:src="@drawable/ic_story_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_bg_story_text"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="39dp"
+        android:src="@drawable/ic_bg_story_text"
+        app:layout_constraintEnd_toEndOf="@+id/iv_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon"
+        android:contentDescription="@string/app_icon" />
+
+    <TextView
+        android:id="@+id/tv_story"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/story"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
+        app:layout_constraintEnd_toEndOf="@+id/iv_bg_story_text"
+        app:layout_constraintStart_toStartOf="@+id/iv_bg_story_text"
+        app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
+        app:layout_constraintVertical_bias="0.465" />
+
+    <TextView
+        android:id="@+id/tv_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/my_theme"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="normal"
+        android:text="@string/app"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
+        app:layout_constraintStart_toEndOf="@+id/iv_bg_story_text"
+        app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <ImageView
+        android:id="@+id/iv_icon_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
+        android:contentDescription="@string/desc_name_ic"
+        android:src="@drawable/ic_name"
+        app:layout_constraintEnd_toStartOf="@+id/iv_bg_story_text"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bg_story_text" />
+
+    <com.example.mystoryapp.customview.CustomNameEditText
+        android:id="@+id/cv_edt_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:layout_marginStart="8dp"
+        android:hint="@string/name"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_icon_name"
+        app:layout_constraintStart_toEndOf="@+id/iv_icon_name"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon_name" />
+
+    <ImageView
+        android:id="@+id/iv_icon_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_ic_email"
+        android:src="@drawable/ic_email"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_icon_name"
+        app:layout_constraintStart_toStartOf="@+id/iv_icon_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_icon_name" />
+
+    <com.example.mystoryapp.customview.CustomEmailEditText
+        android:id="@+id/cv_edt_email_login"
+        android:layout_width="200dp"
+        android:fontFamily="sans-serif"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="@string/hint_username"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_icon_email"
+        app:layout_constraintStart_toEndOf="@+id/iv_icon_email"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon_email" />
+
+
+    <ImageView
+        android:id="@+id/iv_icon_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_pass"
+        app:layout_constraintEnd_toEndOf="@+id/iv_icon_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_icon_email"
+        app:layout_constraintTop_toBottomOf="@+id/iv_icon_email"
+        android:contentDescription="@string/desc_ic_pass" />
+
+    <com.example.mystoryapp.customview.CustomPassEditText
+        android:id="@+id/cv_edt_pass_login"
+        android:fontFamily="sans-serif"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_icon_pass"
+        app:layout_constraintStart_toEndOf="@+id/iv_icon_pass"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon_pass" />
+
+    <com.example.mystoryapp.customview.CustomButton
+        android:id="@+id/btn_regist"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/bg_button_login"
+        android:fontFamily="sans-serif"
+        android:padding="0dp"
+        android:text="@string/register"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/cv_edt_pass_login"
+        app:layout_constraintStart_toStartOf="@+id/iv_icon_pass"
+        app:layout_constraintTop_toBottomOf="@+id/iv_icon_pass" />
+</androidx.constraintlayout.widget.ConstraintLayout>

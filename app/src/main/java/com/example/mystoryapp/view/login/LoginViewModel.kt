@@ -27,6 +27,10 @@ class LoginViewModel(private val pref: AccountPreference): ViewModel() {
     private val _loginResponse = MutableLiveData<LoginResponse>()
     val loginResponse: LiveData<LoginResponse> = _loginResponse
 
+//    var errorCode: Int = 0
+    private val _errorCode = MutableLiveData<Int>()
+    val errorCode: LiveData<Int> = _errorCode
+
 
     fun loginAccount(email: String, password: String){
         _isLoading.value = true
@@ -38,7 +42,11 @@ class LoginViewModel(private val pref: AccountPreference): ViewModel() {
                     _loginResponse.value = response.body()
                     _loginResult.value = response.body()?.loginResult
                 } else {
+                    _errorCode.value = response.code()
                     Log.e(TAG, "onFailure: ${response.message()}")
+                    Log.e(TAG, "onFailure: ${response.code()}")
+                    Log.e(TAG, "onFailure: ${response.errorBody()}")
+                    _errorCode.value = -1
                 }
             }
 
