@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         Thread.sleep(2000)
         installSplashScreen()
-        supportActionBar?.hide()
+//        supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnRegist.setOnClickListener {

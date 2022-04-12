@@ -11,12 +11,10 @@
         android:theme="@style/Theme.MyStoryApp">
         <activity
             android:name=".view.regist.RegistActivity"
-            android:theme="@style/Theme.MyStoryApp"
             android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"
-            android:exported="false"
-            android:theme="@style/Theme.MyStoryApp" />
+            android:exported="false" />
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true"

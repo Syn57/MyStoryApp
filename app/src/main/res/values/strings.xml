@@ -18,4 +18,6 @@
     <string name="name">Name</string>
     <string name="desc_name_ic">icon name input section</string>
     <string name="logout">Logout</string>
+    <string name="error_regist">Ups, please check your data again!</string>
+    <string name="succes_regist">User created, please login!</string>
 </resources>

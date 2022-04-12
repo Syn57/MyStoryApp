@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.example.mystoryapp.R
 
-class CustomLoginButton: AppCompatButton {
+class CustomButton: AppCompatButton {
 
     private lateinit var enabledBg: Drawable
     private lateinit var disabledBg: Drawable
@@ -30,7 +30,6 @@ class CustomLoginButton: AppCompatButton {
         setTextColor(txtColor)
         textSize = 12f
         gravity = Gravity.CENTER
-        text = resources.getString(R.string.login)
     }
 
     private fun init() {
