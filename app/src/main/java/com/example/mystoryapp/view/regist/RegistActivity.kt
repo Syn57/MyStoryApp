@@ -95,7 +95,9 @@ class RegistActivity : AppCompatActivity() {
             registViewModel.registResponse.observe(this){
                 if (!it.error){
                     Toast.makeText(this, resources.getString(R.string.succes_regist), Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                     finish()
                 }
             }
