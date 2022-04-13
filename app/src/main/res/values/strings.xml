@@ -22,4 +22,5 @@
     <string name="succes_regist">User created, please login!</string>
     <string name="error_400">Email or password is invalid</string>
     <string name="error_401">Account not found</string>
+    <string name="time_at">at</string>
 </resources>
