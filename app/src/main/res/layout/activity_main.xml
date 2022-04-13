@@ -9,6 +9,7 @@
     tools:context=".view.main.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,8 +35,8 @@
                 android:id="@+id/iv_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_logout"
                 android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,9 +54,9 @@
                 android:id="@+id/tv_story"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
                 android:text="@string/story"
                 android:textColor="@color/white"
-                android:fontFamily="sans-serif"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
@@ -69,11 +70,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/app"
                 android:textColor="@color/my_theme"
                 android:textSize="18sp"
-                android:fontFamily="sans-serif-light"
                 android:textStyle="normal"
-                android:text="@string/app"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
                 app:layout_constraintStart_toEndOf="@+id/iv_bg_story_text"
                 app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
@@ -89,5 +90,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_story"
+        android:layout_width="match_parent"
+        android:layout_height="679dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
