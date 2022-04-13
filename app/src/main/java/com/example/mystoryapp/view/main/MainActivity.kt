@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity(){
         installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setSupportActionBar(binding.toolbar)
         setupView()
         setupViewModel()
         setupAction()
