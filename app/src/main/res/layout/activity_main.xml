@@ -39,7 +39,8 @@
                 android:src="@drawable/ic_logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/icon_logout" />
 
             <ImageView
                 android:id="@+id/iv_bg_story_text"
@@ -48,7 +49,8 @@
                 android:layout_marginStart="12dp"
                 android:src="@drawable/ic_bg_story_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/story_user_image" />
 
             <TextView
                 android:id="@+id/tv_story"
@@ -113,4 +115,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_story"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/my_theme"
+        android:theme="@style/Theme.MaterialComponents"
+        android:src="@drawable/ic_add"
+        app:elevation="20dp"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@null"
+        android:contentDescription="@string/desc_fab_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

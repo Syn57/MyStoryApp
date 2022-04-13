@@ -23,4 +23,8 @@
     <string name="error_400">Email or password is invalid</string>
     <string name="error_401">Account not found</string>
     <string name="time_at">at</string>
+    <string name="icon_logout">Logout icon</string>
+    <string name="icon_back">Back icon</string>
+    <string name="story_user_image">Story user image</string>
+    <string name="desc_fab_add">Button to add new story</string>
 </resources>

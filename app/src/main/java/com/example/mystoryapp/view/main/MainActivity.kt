@@ -89,19 +89,14 @@ class MainActivity : AppCompatActivity(){
         binding.rvStory.layoutManager = LinearLayoutManager(this)
         val storyAdapter = StoryAdapter(stories)
         binding.rvStory.adapter = storyAdapter
-//        accountAdapter.setOnItemClickCallback(object : AccountAdapter.OnItemClickCallback {
-//            override fun onItemClicked(accountClicked: ItemsItem) {
-//                val (_, _, _, _, username, _, _, _, _, _, _, _, _, _, _, _, _, _, _) = accountClicked
-//                val moveWithDataIntent =
-//                    Intent(this@MainActivity, DetailAccountActivity::class.java)
-//                moveWithDataIntent.putExtra(DetailAccountActivity.EXTRA_USERNAME, username)
-//                startActivity(moveWithDataIntent)
-//            }
-//        })
         storyAdapter.setOnItemClickCallback(object : StoryAdapter.OnItemClickCallback{
             override fun onItemClicked(accountClicked: ListStoryItem) {
-                  startActivity(Intent(this@MainActivity, DetailStoryActivity::class.java))
-//                Toast.makeText(this, resources.getString(R.string.error_401), Toast.LENGTH_SHORT).show()
+                val i = Intent(this@MainActivity, DetailStoryActivity::class.java)
+                i.putExtra(DetailStoryActivity.EXTRA_NAME, accountClicked.name)
+                i.putExtra(DetailStoryActivity.EXTRA_PHOTO, accountClicked.photoUrl)
+                i.putExtra(DetailStoryActivity.EXTRA_DATE, accountClicked.createdAt)
+                i.putExtra(DetailStoryActivity.EXTRA_DESC, accountClicked.description)
+                startActivity(i)
             }
         })
     }

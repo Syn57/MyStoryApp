@@ -51,7 +51,6 @@
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:textSize="11sp"
             android:fontFamily="sans-serif-light"
             tools:text="9 April 2002 pukul 14.00"
@@ -69,7 +68,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_dummy_photo_profile"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/story_user_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
