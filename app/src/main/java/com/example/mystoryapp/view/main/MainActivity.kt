@@ -30,14 +30,12 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         Thread.sleep(2000)
         installSplashScreen()
-//        supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnRegist.setOnClickListener {
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-        }
+//        setSupportActionBar(binding.toolbar)
         setupView()
         setupViewModel()
+        setupAction()
     }
 
     private fun setupView() {
@@ -55,10 +53,13 @@ class MainActivity : AppCompatActivity(){
 
     private fun setupViewModel(){
         mainViewModel = ViewModelProvider(this, ViewModelFactory(AccountPreference.getInstance(dataStore)))[MainViewModel::class.java]
+
+    }
+    private fun setupAction(){
         mainViewModel.getUser().observe(this){
             if (it.isLogin){
                 Toast.makeText(this, "Hello ${it.name}", Toast.LENGTH_SHORT).show()
-                binding.btnLogout.setOnClickListener {
+                binding.ivLogout.setOnClickListener {
                     mainViewModel.logoutUser()
                 }
             }
