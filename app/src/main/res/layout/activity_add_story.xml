@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_login"
+    tools:context=".view.addstory.AddStoryActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="50dp"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_bg_story_text"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_bg_story_text"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_app"
+                android:contentDescription="@string/app_icon" />
+
+            <TextView
+                android:id="@+id/tv_story"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="@string/story"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
+                app:layout_constraintEnd_toEndOf="@+id/iv_bg_story_text"
+                app:layout_constraintStart_toStartOf="@+id/iv_bg_story_text"
+                app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
+                app:layout_constraintVertical_bias="0.465" />
+
+            <TextView
+                android:id="@+id/tv_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/app"
+                android:textColor="@color/my_theme"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
+                app:layout_constraintStart_toEndOf="@+id/iv_bg_story_text"
+                app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#79D6D1D1"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_ic_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/icon_back" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/iv_hi"
+        android:layout_width="91dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintEnd_toStartOf="@id/tv_greeting"
+        app:srcCompat="@drawable/vector_hi"
+        android:contentDescription="@string/desc_hi_image" />
+
+    <TextView
+        android:id="@+id/tv_hi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/hi"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_greeting"
+        app:layout_constraintStart_toStartOf="@+id/tv_greeting"
+        app:layout_constraintTop_toTopOf="@+id/iv_hi"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_hi_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Asep!"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_hi"
+        app:layout_constraintTop_toTopOf="@+id/tv_hi" />
+
+    <TextView
+        android:id="@+id/tv_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/quest_add_story"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_hi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_hi"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hi" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_desc_story"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/hint_story"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_hi" />
+
+    <ImageView
+        android:id="@+id/iv_story_image"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@id/fab_image_photo"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_desc_story"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/desc_story_image" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_image_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/my_theme"
+        android:contentDescription="@string/desc_fab_add"
+        android:src="@drawable/ic_camera"
+        android:theme="@style/Theme.MaterialComponents"
+        app:elevation="20dp"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_story_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_story_image"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_image_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/my_theme"
+        android:contentDescription="@string/desc_fab_add"
+        android:src="@drawable/ic_gallery"
+        android:theme="@style/Theme.MaterialComponents"
+        app:elevation="20dp"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="@+id/fab_image_photo"
+        app:layout_constraintStart_toStartOf="@+id/fab_image_photo"
+        app:layout_constraintTop_toBottomOf="@+id/fab_image_photo"
+        app:tint="@null" />
+
+    <com.example.mystoryapp.customview.CustomButton
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="@string/hint_upload"
+        android:layout_marginTop="24dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_story_image" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
