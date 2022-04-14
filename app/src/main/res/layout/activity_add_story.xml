@@ -210,6 +210,7 @@
         app:tint="@null" />
 
     <com.example.mystoryapp.customview.CustomButton
+        android:id="@+id/cv_btn_upload"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="@string/hint_upload"
@@ -219,5 +220,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_story_image" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:foregroundGravity="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

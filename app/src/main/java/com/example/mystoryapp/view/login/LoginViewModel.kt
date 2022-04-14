@@ -20,14 +20,12 @@ class LoginViewModel(private val pref: AccountPreference): ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    //di github user pake var
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
     private val _loginResponse = MutableLiveData<LoginResponse>()
     val loginResponse: LiveData<LoginResponse> = _loginResponse
 
-//    var errorCode: Int = 0
     private val _errorCode = MutableLiveData<Int>()
     val errorCode: LiveData<Int> = _errorCode
 

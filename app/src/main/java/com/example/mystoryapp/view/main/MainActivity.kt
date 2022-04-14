@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity(){
         var name: String
         mainViewModel.getUser().observe(this){
             if (it.isLogin){
-                Toast.makeText(this, "Hello ${it.name}", Toast.LENGTH_SHORT).show()
                 token = "Bearer ${it.token}"
                 name = it.name
                 binding.fabAddStory.setOnClickListener {
