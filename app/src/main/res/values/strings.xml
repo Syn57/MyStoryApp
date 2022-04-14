@@ -27,7 +27,7 @@
     <string name="icon_back">Back icon</string>
     <string name="story_user_image">Story user image</string>
     <string name="desc_fab_add">Button to add new story</string>
-    <string name="hint_story">Tell me your story here!</string>
+    <string name="hint_story">Tell us your story here!</string>
     <string name="hint_upload">Upload</string>
     <string name="desc_story_image">The image of your story</string>
     <string name="quest_add_story">What is your story today?</string>
