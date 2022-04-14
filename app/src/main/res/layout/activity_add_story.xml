@@ -127,6 +127,7 @@
         android:id="@+id/tv_hi_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         tools:text="Asep!"
         android:fontFamily="sans-serif-condensed-light"
         android:textStyle="bold"
@@ -146,26 +147,36 @@
         app:layout_constraintStart_toEndOf="@+id/iv_hi"
         app:layout_constraintTop_toBottomOf="@+id/tv_hi" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edt_desc_story"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_edt_desc"
         android:layout_width="270dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginTop="12dp"
-        android:hint="@string/hint_story"
         app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/hint_story"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_hi" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_hi">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_desc_story"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent" />
 
-    <ImageView
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_story_image"
         android:layout_width="250dp"
+        app:strokeColor="@color/grey"
+        app:strokeWidth="1dp"
         android:layout_height="250dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toStartOf="@id/fab_image_photo"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_desc_story"
-        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/layout_edt_desc"
+        app:srcCompat="@drawable/ic_up_image"
         android:contentDescription="@string/desc_story_image" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

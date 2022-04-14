@@ -22,6 +22,7 @@ import com.example.mystoryapp.data.remote.response.ListStoryItem
 import com.example.mystoryapp.databinding.ActivityMainBinding
 import com.example.mystoryapp.view.ViewModelFactory
 import com.example.mystoryapp.view.adapter.StoryAdapter
+import com.example.mystoryapp.view.addstory.AddStoryActivity
 import com.example.mystoryapp.view.detailstory.DetailStoryActivity
 import com.example.mystoryapp.view.login.LoginActivity
 import com.example.mystoryapp.view.login.LoginViewModel
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity(){
             )
         }
         supportActionBar?.hide()
+
     }
 
     private fun setupViewModel(){
@@ -70,10 +72,18 @@ class MainActivity : AppCompatActivity(){
     }
     private fun setupAction(){
         var token: String
+        var name: String
         mainViewModel.getUser().observe(this){
             if (it.isLogin){
                 Toast.makeText(this, "Hello ${it.name}", Toast.LENGTH_SHORT).show()
                 token = "Bearer ${it.token}"
+                name = it.name
+                binding.fabAddStory.setOnClickListener {
+                    val i = Intent(this@MainActivity, AddStoryActivity::class.java)
+                    i.putExtra(AddStoryActivity.EXTRA_TOKEN, token)
+                    i.putExtra(AddStoryActivity.EXTRA_NAME,name)
+                    startActivity(i)
+                }
                 mainViewModel.getStory(token)
                 binding.ivLogout.setOnClickListener {
                     mainViewModel.logoutUser()
