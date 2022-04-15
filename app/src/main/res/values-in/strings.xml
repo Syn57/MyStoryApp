@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyStoryApp</string>
+    <string name="error_400">Email atau password salah</string>
+    <string name="error_401">Akun tidak ditemukan</string>
+    <string name="login">Masuk</string>
+    <string name="or">Atau</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_email">Email</string>
+    <string name="error_pass">Setidaknya, kata sandi harus 6 karakter!</string>
+    <string name="error_email">Alamat email salah!</string>
+    <string name="app">App</string>
+    <string name="story">Story</string>
+    <string name="register">Daftar</string>
+    <string name="hint_register">Belum punya akun? Daftar sekarang!</string>
+    <string name="app_icon">ikon aplikasi</string>
+    <string name="desc_ic_email">ikon bagian email</string>
+    <string name="desc_ic_pass">ikon bagian password</string>
+    <string name="background_login_bottom">background login bottom</string>
+    <string name="name">Nama</string>
+    <string name="desc_name_ic">ikon bagian input nama</string>
+    <string name="logout">Keluar</string>
+    <string name="error_regist">Ups, mohon periksa kembali data anda!</string>
+    <string name="succes_regist">User telah dibuat, silahkan login!</string>
+    <string name="time_at">pukul</string>
+    <string name="icon_logout">ikon logout</string>
+    <string name="icon_back">ikon kembali</string>
+    <string name="story_user_image">gambar story user</string>
+    <string name="desc_fab_add">Tombol untuk menambah carita baru</string>
+    <string name="hint_story">Share pengalamanmu disini!</string>
+    <string name="hint_upload">Unggah</string>
+    <string name="desc_story_image">Gambar cerita anda</string>
+    <string name="quest_add_story">Apa ceritamu hari ini?</string>
+    <string name="hi">Hai,</string>
+    <string name="desc_hi_image">Gambar sapaan untukmu</string>
+    <string name="permission_denied">Izin tidak diberikan</string>
+    <string name="choose_img">Pilih gambar</string>
+    <string name="empty_img">Silahkan  input gambar terlebih dahulu</string>
+    <string name="up_success">Ceritamu berhasil diunggah</string>
+</resources>

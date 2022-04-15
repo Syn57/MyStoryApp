@@ -1,24 +1,21 @@
 package com.example.mystoryapp.view.detailstory
 
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.example.mystoryapp.R
 import com.example.mystoryapp.databinding.ActivityDetailStoryBinding
-import com.example.mystoryapp.view.login.LoginActivity
-import com.example.mystoryapp.view.main.MainActivity
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 class DetailStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailStoryBinding
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +23,9 @@ class DetailStoryActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupView()
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun setupView(){
+    private fun setupView() {
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
@@ -63,6 +61,7 @@ class DetailStoryActivity : AppCompatActivity() {
             finish()
         }
     }
+
     companion object {
         const val EXTRA_PHOTO = "extra_age"
         const val EXTRA_NAME = "extra_name"

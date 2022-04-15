@@ -20,7 +20,6 @@ import com.example.mystoryapp.data.model.AccountPreference
 import com.example.mystoryapp.databinding.ActivityRegistBinding
 import com.example.mystoryapp.view.ViewModelFactory
 import com.example.mystoryapp.view.login.LoginActivity
-import com.example.mystoryapp.view.login.LoginViewModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -28,6 +27,7 @@ class RegistActivity : AppCompatActivity() {
 
     private lateinit var registViewModel: RegistViewModel
     private lateinit var binding: ActivityRegistBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -37,6 +37,7 @@ class RegistActivity : AppCompatActivity() {
         setupViewModel()
         setUpAction()
     }
+
     private fun setupView() {
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -50,51 +51,64 @@ class RegistActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private fun setupViewModel(){
-        registViewModel = ViewModelProvider(this, ViewModelFactory(AccountPreference.getInstance(dataStore)))[RegistViewModel::class.java]
-        registViewModel.isLoading.observe(this){
+    private fun setupViewModel() {
+        registViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(AccountPreference.getInstance(dataStore))
+        )[RegistViewModel::class.java]
+        registViewModel.isLoading.observe(this) {
             showLoading(it)
         }
-        
+
     }
 
-    private fun setUpAction(){
+    private fun setUpAction() {
         setMyButtonEnable()
         binding.cvEdtEmailLogin.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setMyButtonEnable()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
         binding.cvEdtPassLogin.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setMyButtonEnable()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
         binding.cvEdtName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setMyButtonEnable()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
-        binding.btnRegist.setOnClickListener{
+        binding.btnRegist.setOnClickListener {
             val name = binding.cvEdtName.text.toString()
             val email = binding.cvEdtEmailLogin.text.toString()
             val pass = binding.cvEdtPassLogin.text.toString()
             registViewModel.registAccount(name, email, pass)
-            registViewModel.registResponse.observe(this){
-                if (!it.error){
-                    Toast.makeText(this, resources.getString(R.string.succes_regist), Toast.LENGTH_SHORT).show()
+            registViewModel.registResponse.observe(this) {
+                if (!it.error) {
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.succes_regist),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
@@ -110,7 +124,11 @@ class RegistActivity : AppCompatActivity() {
             if (it != -1) {
                 when (it) {
                     400 -> {
-                        Toast.makeText(this, resources.getString(R.string.error_400), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            resources.getString(R.string.error_400),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     else -> {
                         Toast.makeText(
@@ -128,8 +146,11 @@ class RegistActivity : AppCompatActivity() {
         val name = binding.cvEdtName.text
         val email = binding.cvEdtEmailLogin.text
         val pass = binding.cvEdtPassLogin.text
-        binding.btnRegist.isEnabled = email != null && email.toString().isNotEmpty() && pass != null && pass.toString().isNotEmpty() && name != null && name.toString().isNotEmpty()
+        binding.btnRegist.isEnabled =
+            email != null && email.toString().isNotEmpty() && pass != null && pass.toString()
+                .isNotEmpty() && name != null && name.toString().isNotEmpty()
     }
+
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bg_login"
+    android:orientation="vertical"
     tools:context=".view.detailstory.DetailStoryActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -36,13 +36,13 @@
                 android:id="@+id/iv_bg_story_text"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/app_icon"
                 android:foregroundGravity="center"
                 android:src="@drawable/ic_bg_story_text"
+                app:layout_constraintEnd_toStartOf="@id/tv_app"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_app"
-                android:contentDescription="@string/app_icon" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_story"
@@ -70,14 +70,14 @@
                 android:textSize="18sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_bg_story_text"
-                app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#79D6D1D1"
+                android:background="@color/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -86,12 +86,12 @@
                 android:id="@+id/iv_ic_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
                 android:layout_marginStart="12dp"
+                android:contentDescription="@string/icon_back"
+                android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/icon_back" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -103,10 +103,12 @@
         android:layout_height="50dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="16dp"
+        android:background="@color/teal_700"
+        android:transitionName="ts_dummy_pp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-        android:background="@color/teal_700" />
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
     <TextView
         android:id="@+id/tv_one_word"
         android:layout_width="wrap_content"
@@ -114,6 +116,7 @@
         android:fontFamily="sans-serif"
         android:textColor="@color/white"
         android:textSize="32sp"
+        android:transitionName="ts_one_word"
         app:layout_constraintBottom_toBottomOf="@+id/iv_dummy_photo_profile"
         app:layout_constraintEnd_toEndOf="@+id/iv_dummy_photo_profile"
         app:layout_constraintStart_toStartOf="@+id/iv_dummy_photo_profile"
@@ -125,44 +128,47 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Name"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
-        android:layout_marginStart="8dp"
         android:textStyle="bold"
+        android:transitionName="ts_name"
         app:layout_constraintStart_toEndOf="@+id/iv_dummy_photo_profile"
-        app:layout_constraintTop_toTopOf="@+id/iv_dummy_photo_profile" />
+        app:layout_constraintTop_toTopOf="@+id/iv_dummy_photo_profile"
+        tools:text="Name" />
 
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="11sp"
         android:fontFamily="sans-serif-light"
-        tools:text="9 April 2002 pukul 14.00"
+        android:textSize="11sp"
+        android:transitionName="ts_date"
         app:layout_constraintStart_toStartOf="@+id/tv_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        tools:text="9 April 2002 pukul 14.00" />
 
     <ImageView
         android:id="@+id/iv_story"
         android:layout_width="370dp"
         android:layout_height="370dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/story_user_image"
         android:scaleType="centerCrop"
+        android:transitionName="ts_story_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/story_user_image" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tools:text="Description"
         app:layout_constraintStart_toStartOf="@+id/iv_dummy_photo_profile"
-        app:layout_constraintTop_toBottomOf="@+id/iv_dummy_photo_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_dummy_photo_profile"
+        tools:text="Description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

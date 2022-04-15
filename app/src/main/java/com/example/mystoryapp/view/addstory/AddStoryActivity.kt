@@ -22,8 +22,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
+import com.example.mystoryapp.R
 import com.example.mystoryapp.databinding.ActivityAddStoryBinding
 import com.example.mystoryapp.view.createTempFile
+import com.example.mystoryapp.view.main.MainActivity
 import com.example.mystoryapp.view.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -35,7 +37,7 @@ import java.io.File
 
 class AddStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddStoryBinding
-    private lateinit var addStoryViewModel: StoryViewModel
+    private lateinit var addStoryViewModel: AddStoryViewModel
     private var getFile: File? = null
     private lateinit var token: String
 
@@ -49,7 +51,7 @@ class AddStoryActivity : AppCompatActivity() {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
-                    "Tidak mendapatkan permission.",
+                    resources.getString(R.string.permission_denied),
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
@@ -60,6 +62,7 @@ class AddStoryActivity : AppCompatActivity() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +70,7 @@ class AddStoryActivity : AppCompatActivity() {
         setContentView(binding.root)
         token = intent.getStringExtra(EXTRA_TOKEN).toString()
         val name = intent.getStringExtra(EXTRA_NAME).toString()
-        val firstName = when(" "){
+        val firstName = when (" ") {
             in name -> {
                 val arr = name.split(" ".toRegex(), 2).toTypedArray()
                 arr[0]
@@ -89,6 +92,7 @@ class AddStoryActivity : AppCompatActivity() {
         setupViewModel()
         setupAction()
     }
+
     private fun setupView() {
         setMyButtonEnable()
         @Suppress("DEPRECATION")
@@ -102,14 +106,19 @@ class AddStoryActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
-    private fun setupViewModel(){
-        addStoryViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[StoryViewModel::class.java]
-        addStoryViewModel.isLoading.observe(this){
+
+    private fun setupViewModel() {
+        addStoryViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[AddStoryViewModel::class.java]
+        addStoryViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
     }
-    private fun setupAction(){
+
+    private fun setupAction() {
         binding.ivIcBack.setOnClickListener {
             finish()
         }
@@ -119,9 +128,11 @@ class AddStoryActivity : AppCompatActivity() {
         binding.edtDescStory.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setMyButtonEnable()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
@@ -133,13 +144,8 @@ class AddStoryActivity : AppCompatActivity() {
     ) {
         if (it.resultCode == RESULT_OK) {
             val myFile = File(currentPhotoPath)
+            val result = BitmapFactory.decodeFile(myFile.path)
 
-            val result =  BitmapFactory.decodeFile(myFile.path)
-//            Silakan gunakan kode ini jika mengalami perubahan rotasi
-//            val result = rotateBitmap(
-//                BitmapFactory.decodeFile(myFile.path),
-//                true
-//            )
             getFile = myFile
             binding.ivStoryImage.setImageBitmap(result)
             setMyButtonEnable()
@@ -177,14 +183,15 @@ class AddStoryActivity : AppCompatActivity() {
         val intent = Intent()
         intent.action = ACTION_GET_CONTENT
         intent.type = "image/*"
-        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        val chooser = Intent.createChooser(intent, resources.getString(R.string.choose_img))
         launcherIntentGallery.launch(chooser)
     }
 
     private fun uploadImage() {
         if (getFile != null) {
             val file = getFile as File
-            val description = binding.edtDescStory.text.toString().toRequestBody("text/plain".toMediaType())
+            val description =
+                binding.edtDescStory.text.toString().toRequestBody("text/plain".toMediaType())
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -192,14 +199,49 @@ class AddStoryActivity : AppCompatActivity() {
                 requestImageFile
             )
             addStoryViewModel.upStory(imageMultipart, description, token)
-            addStoryViewModel.responseMsg.observe(this){
-                Toast.makeText(this, "Story is $it", Toast.LENGTH_SHORT).show()
+            addStoryViewModel.responseUp.observe(this) {
+                if (!it.error) {
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.up_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
+            errorMsg()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
             finish()
 
         } else {
-            Toast.makeText(this@AddStoryActivity, "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@AddStoryActivity,
+                resources.getString(R.string.empty_img),
+                Toast.LENGTH_SHORT
+            ).show()
         }
+    }
+
+    private fun errorMsg() {
+        addStoryViewModel.responseCode.observe(this) {
+            if (it != -1) {
+                val codeError = it
+                addStoryViewModel.responseMsg.observe(this) { msg ->
+                    Toast.makeText(this, "Error $codeError: $msg", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun setMyButtonEnable() {
+        val desc = binding.edtDescStory.text
+        binding.cvBtnUpload.isEnabled =
+            desc != null && desc.toString().isNotEmpty() && getFile != null
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object {
@@ -207,15 +249,6 @@ class AddStoryActivity : AppCompatActivity() {
         const val EXTRA_NAME = "extra_name"
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
-    }
-
-    private fun setMyButtonEnable() {
-        val desc = binding.edtDescStory.text
-        binding.cvBtnUpload.isEnabled = desc != null && desc.toString().isNotEmpty() && getFile != null
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }

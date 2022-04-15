@@ -11,28 +11,36 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.mystoryapp.R
 
-class CustomEmailEditText : AppCompatEditText, View.OnTouchListener{
+class CustomEmailEditText : AppCompatEditText, View.OnTouchListener {
 
     constructor(context: Context) : super(context) {
         init()
     }
+
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init()
     }
+
     private fun init() {
         setOnTouchListener(this)
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // Do nothing.
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(!Patterns.EMAIL_ADDRESS.matcher(s).matches()) error = resources.getString(R.string.error_email)
+                if (!Patterns.EMAIL_ADDRESS.matcher(s).matches()) error =
+                    resources.getString(R.string.error_email)
             }
+
             override fun afterTextChanged(s: Editable) {
-                // Do nothing.
             }
         })
     }

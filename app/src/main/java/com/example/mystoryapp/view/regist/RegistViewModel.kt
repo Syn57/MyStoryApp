@@ -34,7 +34,6 @@ class RegistViewModel(private val pref: AccountPreference): ViewModel() {
                 if (response.isSuccessful){
                     _registResponse.value = response.body()
                 } else {
-//                    Toast.makeText(this, resources.getString(R.string.error_regist), Toast.LENGTH_SHORT).show()
                     _errorCode.value = response.code()
                     Log.e(TAG, "onFailure: ${response.message()}")
                     Log.e(TAG, "onFailure: ${response.code()}")

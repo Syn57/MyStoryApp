@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.mystoryapp.data.model.AccountModel
 import com.example.mystoryapp.data.model.AccountPreference
@@ -16,7 +15,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 
-class LoginViewModel(private val pref: AccountPreference): ViewModel() {
+class LoginViewModel(private val pref: AccountPreference) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -30,7 +29,7 @@ class LoginViewModel(private val pref: AccountPreference): ViewModel() {
     val errorCode: LiveData<Int> = _errorCode
 
 
-    fun loginAccount(email: String, password: String){
+    fun loginAccount(email: String, password: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().loginAccount(email, password)
         client.enqueue(object : Callback<LoginResponse> {
@@ -56,7 +55,7 @@ class LoginViewModel(private val pref: AccountPreference): ViewModel() {
 
     }
 
-    fun saveAccount(account: AccountModel){
+    fun saveAccount(account: AccountModel) {
         viewModelScope.launch {
             pref.saveUser(account)
         }

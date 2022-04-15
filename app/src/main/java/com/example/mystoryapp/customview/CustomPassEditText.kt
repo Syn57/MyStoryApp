@@ -10,28 +10,37 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.mystoryapp.R
 
-class CustomPassEditText: AppCompatEditText, View.OnTouchListener{
+class CustomPassEditText : AppCompatEditText, View.OnTouchListener {
 
     constructor(context: Context) : super(context) {
         init()
     }
+
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init()
     }
+
     private fun init() {
         setOnTouchListener(this)
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // Do nothing.
+
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.length<6) error = resources.getString(R.string.error_pass)
+                if (s.length < 6) error = resources.getString(R.string.error_pass)
             }
+
             override fun afterTextChanged(s: Editable) {
-                // Do nothing.
+
             }
         })
     }

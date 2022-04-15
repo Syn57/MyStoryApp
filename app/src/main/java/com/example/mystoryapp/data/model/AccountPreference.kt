@@ -14,16 +14,14 @@ class AccountPreference private constructor(private val dataStore: DataStore<Pre
         return dataStore.data.map { preferences ->
             AccountModel(
                 preferences[USERID_KEY] ?: "",
-                preferences[NAME_KEY] ?:"",
-//                preferences[EMAIL_KEY] ?:"",
-//                preferences[PASSWORD_KEY] ?:"",
+                preferences[NAME_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
                 preferences[STATE_KEY] ?: false
             )
         }
     }
 
-    suspend fun clearUser(){
+    suspend fun clearUser() {
         dataStore.edit {
             it.clear()
         }
@@ -33,8 +31,6 @@ class AccountPreference private constructor(private val dataStore: DataStore<Pre
         dataStore.edit { preferences ->
             preferences[USERID_KEY] = account.userId
             preferences[NAME_KEY] = account.name
-//            preferences[EMAIL_KEY] = account.email
-//            preferences[PASSWORD_KEY] = account.password
             preferences[TOKEN_KEY] = account.token
             preferences[STATE_KEY] = account.isLogin
         }
@@ -46,19 +42,12 @@ class AccountPreference private constructor(private val dataStore: DataStore<Pre
         }
     }
 
-    suspend fun logout() {
-        dataStore.edit { preferences ->
-            preferences[STATE_KEY] = false
-        }
-    }
     companion object {
         @Volatile
         private var INSTANCE: AccountPreference? = null
 
         private val USERID_KEY = stringPreferencesKey("userId")
         private val NAME_KEY = stringPreferencesKey("name")
-//        private val EMAIL_KEY = stringPreferencesKey("email")
-//        private val PASSWORD_KEY = stringPreferencesKey("password")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val STATE_KEY = booleanPreferencesKey("state")
 

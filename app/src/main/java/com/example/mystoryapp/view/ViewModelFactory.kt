@@ -7,12 +7,13 @@ import com.example.mystoryapp.view.login.LoginViewModel
 import com.example.mystoryapp.view.main.MainViewModel
 import com.example.mystoryapp.view.regist.RegistViewModel
 
-class ViewModelFactory(private val pref: AccountPreference): ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val pref: AccountPreference) :
+    ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T: ViewModel> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(MainViewModel::class.java) ->{
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(pref) as T
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {

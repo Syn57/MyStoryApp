@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg_login"
     tools:context=".view.addstory.AddStoryActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -36,13 +35,13 @@
                 android:id="@+id/iv_bg_story_text"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/app_icon"
                 android:foregroundGravity="center"
                 android:src="@drawable/ic_bg_story_text"
+                app:layout_constraintEnd_toStartOf="@id/tv_app"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_app"
-                android:contentDescription="@string/app_icon" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_story"
@@ -70,14 +69,14 @@
                 android:textSize="18sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_bg_story_text"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_bg_story_text"
-                app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="@+id/iv_bg_story_text" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#79D6D1D1"
+                android:background="@color/grey"
                 app:layout_constraintBottom_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -86,12 +85,12 @@
                 android:id="@+id/iv_ic_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
                 android:layout_marginStart="12dp"
+                android:contentDescription="@string/icon_back"
+                android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/icon_back" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -101,15 +100,14 @@
         android:id="@+id/iv_hi"
         android:layout_width="91dp"
         android:layout_height="119dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="12dp"
+        android:contentDescription="@string/desc_hi_image"
+        app:layout_constraintEnd_toStartOf="@id/tv_greeting"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintEnd_toStartOf="@id/tv_greeting"
-        app:srcCompat="@drawable/vector_hi"
-        android:contentDescription="@string/desc_hi_image" />
+        app:srcCompat="@drawable/vector_hi" />
 
     <TextView
         android:id="@+id/tv_hi"
@@ -128,12 +126,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        tools:text="Asep!"
         android:fontFamily="sans-serif-condensed-light"
-        android:textStyle="bold"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tv_hi"
-        app:layout_constraintTop_toTopOf="@+id/tv_hi" />
+        app:layout_constraintTop_toTopOf="@+id/tv_hi"
+        tools:text="Asep!" />
 
     <TextView
         android:id="@+id/tv_greeting"
@@ -152,15 +150,16 @@
         android:layout_width="270dp"
         android:layout_height="150dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
         android:hint="@string/hint_story"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_hi">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_desc_story"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:gravity="center" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -168,16 +167,16 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_story_image"
         android:layout_width="250dp"
-        app:strokeColor="@color/grey"
-        app:strokeWidth="1dp"
         android:layout_height="250dp"
         android:layout_marginTop="12dp"
+        android:contentDescription="@string/desc_story_image"
         app:layout_constraintEnd_toStartOf="@id/fab_image_photo"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_edt_desc"
         app:srcCompat="@drawable/ic_up_image"
-        android:contentDescription="@string/desc_story_image" />
+        app:strokeColor="@color/grey"
+        app:strokeWidth="1dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_image_photo"
@@ -213,8 +212,8 @@
         android:id="@+id/cv_btn_upload"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:text="@string/hint_upload"
         android:layout_marginTop="24dp"
+        android:text="@string/hint_upload"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -224,12 +223,12 @@
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:foregroundGravity="center"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:foregroundGravity="center"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
