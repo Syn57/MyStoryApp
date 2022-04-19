@@ -56,6 +56,7 @@ class RegistActivity : AppCompatActivity() {
             this,
             ViewModelFactory(AccountPreference.getInstance(dataStore))
         )[RegistViewModel::class.java]
+
         registViewModel.isLoading.observe(this) {
             showLoading(it)
         }
